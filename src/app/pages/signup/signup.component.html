@@ -1,0 +1,56 @@
+<div class="bootstrap-wrapper">
+	<div class="container text-center margin">
+		<div class="row">
+
+			<div class="col-md-6 offset-md-3">
+
+        <div class="container text-center">
+          <img src="../../../assets/logo.png" height="90px">
+        </div>
+
+
+        <h1>Registration Page !!</h1>
+
+        <form (ngSubmit)="SubmitForm()">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>User Name</mat-label>
+            <input matInput name="username" [(ngModel)]="user.username" placeholder="Enter Here" >
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput  name="firstname" [(ngModel)]="user.firstname" placeholder="Enter Here">
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput  name="lastname" [(ngModel)]="user.lastname" placeholder="Enter Here">
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email"  name="email" [(ngModel)]="user.email" matInput placeholder="Enter Here">
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input type="number" matInput  name="number" [(ngModel)]="user.number" placeholder="Enter Here">
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput  name="password" [(ngModel)]="user.password" placeholder="Enter Here">
+          </mat-form-field>
+
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="accent">Submit</button>
+            <button type="reset" mat-raised-button color="warn" style="margin: 10px;">Reset</button>
+          </div>
+        </form>
+
+      </div>
+
+		</div>
+	</div>
+</div>
+
