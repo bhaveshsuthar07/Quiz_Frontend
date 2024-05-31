@@ -11,8 +11,8 @@ export class SignupComponent implements OnInit {
 
   public user={
     username:"",
-    firstname:"",
-    lastname:"",
+    firstName:"",
+    lastName:"",
     email:"",
     number:"",
     password:""
@@ -31,6 +31,14 @@ export class SignupComponent implements OnInit {
       })
       return;
     }
+
+    if(this.user.password=='' || this.user.password==null){
+      this.snake.open("Password can't be empty!!","OK",{
+        duration:2000
+      })
+      return;
+    }
+
       this.service.userRegistration(this.user).subscribe(
         response=>{
 
