@@ -5,6 +5,21 @@
   margin-top: 50px;
 }
 
+.mt10px{
+  margin-top: 10px;
+}
+
 .mt20px{
   margin-top: 20px;
+}
+.mb20px{
+  margin-bottom: 20px;
+}
+
+.m10px{
+  margin: 10px;
+}
+
+.card{
+  box-shadow: 5px 5px 5px 5px #888888;
 }

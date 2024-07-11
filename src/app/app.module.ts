@@ -17,13 +17,18 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './pages/login/login.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSnackBarModule,
     MatToolbarModule,
     MatProgressBarModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
 
   ],
   providers: [

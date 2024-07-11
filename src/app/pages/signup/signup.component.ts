@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignupServiceService } from '../../service/signup-service.service';
+import { SignupServiceService } from '../../service/signup/signup-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -40,14 +40,14 @@ export class SignupComponent implements OnInit {
     }
 
       this.service.userRegistration(this.user).subscribe(
-        response=>{
+        (response:any)=>{
 
           console.log(response);
           this.snake.open("User Successfully Registred","OK",{
             duration:2000
           })
 
-        }, error=>{
+        }, (error)=>{
           console.log(error);
           this.snake.open("Error Saving User!!!!","OK",{
             duration:2000

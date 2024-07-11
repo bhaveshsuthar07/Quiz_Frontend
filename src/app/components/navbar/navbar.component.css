@@ -1,0 +1,14 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.padding{
+  padding: 10px;
+}
+
+.margin{
+  margin: 10px;
+}
+.hover{
+  cursor: pointer;
+}

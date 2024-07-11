@@ -15,9 +15,4 @@ export class SignupServiceService {
     return this.http.post(`${this.baseUrl}/user/`,user);
     }
 
-    userLogin(username:any){
-
-      return this.http.get(`${this.baseUrl}/user/get/${username}`);
-      }
-
 }
