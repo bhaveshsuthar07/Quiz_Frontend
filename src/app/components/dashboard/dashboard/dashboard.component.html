@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<div class="container text-center mt50px">
+    <div class="">
+  
+      <div class="row">
+  
+        <div class="col-md-6 offset-md-3">
+  
+          <h1>Dashboard !!</h1>
+  
+          <button type="submit" mat-raised-button color="accent" (click)="getUser();">Get Login User</button>
+  
+        </div>
+        {{loginUser|json}}
+      </div>
+    </div>
+  </div>
+  

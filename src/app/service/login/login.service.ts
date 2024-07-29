@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -11,17 +12,25 @@ private baseUrl:String ="http://192.168.1.10:8088"
 
   constructor(private http:HttpClient) { }
 
+
+  public loginStatusSubject = new Subject<boolean>();
+
   genrateToken(logindata:any){
     return this.http.post(`${this.baseUrl}/token`,logindata);
   }
 
   loginUser(username:any,accessToken:any){
-    return this.http.get(`${this.baseUrl}/user/get/${username}`,{
-      headers:{
-        'Authorization':`Bearer ${accessToken}`
-      }
-    });
-  }
+    // return this.http.get(`${this.baseUrl}/user/get/${username}`,{
+    //   headers:{
+    //     'Authorization':`Bearer ${accessToken}`
+    //   }
+    // });
+    return this.http.get(`${this.baseUrl}/current`,{
+         headers:{
+           'Authorization':`Bearer ${accessToken}`
+         }
+       });
+    }
 
 
 
@@ -29,7 +38,9 @@ private baseUrl:String ="http://192.168.1.10:8088"
   // for userLogin validation
 
   public login(token:any){
+    //this.logout();
     localStorage.setItem('token',token);
+    localStorage.setItem('firstName','');
     return true;
   }
 
@@ -37,7 +48,7 @@ private baseUrl:String ="http://192.168.1.10:8088"
 
     let token = localStorage.getItem('token');
 
-    if(token==null||token==''||token==undefined){
+    if(token==undefined||token=='' || token==null){
       return false;
     }else{
       return true;
@@ -48,6 +59,7 @@ private baseUrl:String ="http://192.168.1.10:8088"
   public logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    window.location.reload();
     return true;
   }
 
@@ -59,22 +71,18 @@ private baseUrl:String ="http://192.168.1.10:8088"
   public setUser(user:any){
     let userString = JSON.stringify(user);
     localStorage.setItem('user',userString);
+    localStorage.setItem('firstName',user.firstName);
   }
 
   public getUser(){
     let userstring = localStorage.getItem('user');
 
-    console.log(userstring,'+++++++++++++++++++++++')
-
-    if(userstring!=null || userstring != undefined){
+    if(userstring!=null){
       let user:any = JSON.parse(userstring);
-
-      console.log(user,'+++++++++++++++++++++++')
-
       return user;
     }else{
-      this.logout();
-      return null;
+       this.logout();
+       return null;
     }
 
   }
@@ -85,5 +93,9 @@ private baseUrl:String ="http://192.168.1.10:8088"
       let user:any = JSON.parse(userString);
       return user.authorities[0].authority;
      }
+  }
+
+  public getFirstName(){
+    return localStorage.getItem('firstName');
   }
 }

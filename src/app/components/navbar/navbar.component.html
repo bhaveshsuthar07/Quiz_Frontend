@@ -5,13 +5,17 @@
   <a  routerLink="/">Quiz App</a>
   <span class="example-spacer"></span>
 
-  <a mat-icon-button class="example-icon hover" routerLink="/signup" aria-label="Example icon-button with share icon">
-    <mat-icon>how_to_reg</mat-icon>
+
+  <a *ngIf="!isLogin()" mat-icon-button class="example-icon hover" routerLink="/signup" aria-label="Example icon-button with share icon">
+     <mat-icon>how_to_reg</mat-icon>
   </a>
-  <a mat-icon-button class="example-icon favorite-icon hover"  routerLink="/login" aria-label="Example icon-button with heart icon">
+  <a *ngIf="!isLogin()" mat-icon-button class="example-icon favorite-icon hover"  routerLink="/login" aria-label="Example icon-button with heart icon">
     <mat-icon>login</mat-icon>
   </a>
-  <a mat-icon-button class="example-icon hover" routerLink="/" aria-label="Example icon-button with share icon">
-    <mat-icon>logout</mat-icon>
-  </a>
+  <button *ngIf="isLogin()" mat-button class="example-icon hover" aria-label="Example icon-button with share icon">
+   {{getUser()}}
+   </button>
+   <a *ngIf="isLogin()" mat-icon-button class="example-icon hover" (click)="service.logout()" routerLink="/" aria-label="Example icon-button with share icon">
+     <mat-icon>logout</mat-icon>
+   </a>
 </mat-toolbar>

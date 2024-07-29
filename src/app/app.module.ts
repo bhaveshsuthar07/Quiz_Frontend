@@ -20,6 +20,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
+import { authInterceptorProvider } from './service/auth.interceptor';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,10 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
     NavbarComponent,
     LoginComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    AdminDashboardComponent,
+    ProfileComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +52,12 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
     MatToolbarModule,
     MatProgressBarModule,
     MatIconModule,
-    MatCheckboxModule
-
+    MatCheckboxModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [
+    authInterceptorProvider,
     provideClientHydration(),
     provideAnimationsAsync()
   ],

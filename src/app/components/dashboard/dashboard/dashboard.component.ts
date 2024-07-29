@@ -9,6 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit{
 
+  public loginUser={
+    username:"",
+    firstName:"",
+    lastName:"",
+    email:"",
+    number:"",
+    password:""
+  }
+
+
   constructor(private service:LoginService, private snake:MatSnackBar){}
 
   ngOnInit(): void {}
@@ -19,10 +29,14 @@ getUser(){
   let user:any = this.service.getUser();
 
   console.log(user);
+  this.loginUser = user;
 
 }
 
-
+  //  logout(){
+  //   console.log("logout function running...............");
+  //     this.service.logout();
+  // }
 
 
 

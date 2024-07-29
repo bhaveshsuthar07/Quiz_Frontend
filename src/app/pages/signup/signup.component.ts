@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SignupServiceService } from '../../service/signup/signup-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -18,9 +19,13 @@ export class SignupComponent implements OnInit {
     password:""
   }
 
+  public tc={
+    termsandcondition:''
+  }
+
   ngOnInit():void{}
 
-  constructor(private service:SignupServiceService, private snake:MatSnackBar){}
+  constructor(private service:SignupServiceService, private snake:MatSnackBar,private route:Router){}
 
   SubmitForm(){
 
@@ -39,6 +44,13 @@ export class SignupComponent implements OnInit {
       return;
     }
 
+    if(this.tc.termsandcondition==null||this.tc.termsandcondition==''){
+      this.snake.open("Please accept Terms & Condition !!","OK",{
+        duration:1000
+      })
+      return;
+    }
+
       this.service.userRegistration(this.user).subscribe(
         (response:any)=>{
 
@@ -46,7 +58,8 @@ export class SignupComponent implements OnInit {
           this.snake.open("User Successfully Registred","OK",{
             duration:2000
           })
-
+          this.route.navigate(['login']);
+          //window.location.reload();
         }, (error)=>{
           console.log(error);
           this.snake.open("Error Saving User!!!!","OK",{

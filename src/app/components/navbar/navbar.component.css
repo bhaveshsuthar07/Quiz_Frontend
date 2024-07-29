@@ -12,3 +12,6 @@
 .hover{
   cursor: pointer;
 }
+.popup{
+  display: none;
+}
